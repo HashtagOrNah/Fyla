@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ButtonHover.wav-7e7769be1df366122fc95fae21ab2dcb.sample"
+
+[deps]
+
+source_file="res://Sounds/SoundEffects/ButtonHover.wav"
+dest_files=[ "res://.import/ButtonHover.wav-7e7769be1df366122fc95fae21ab2dcb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=true
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0
