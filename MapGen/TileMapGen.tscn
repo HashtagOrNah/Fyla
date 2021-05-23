@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MapGen/TileMap.tres" type="TileSet" id=1]
+[ext_resource path="res://MapGen/TileMapGen.gd" type="Script" id=2]
+
+[node name="TileMap" type="TileMap"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 64
+collision_layer = 0
+collision_mask = 0
+occluder_light_mask = 0
+format = 1
+script = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+zoom = Vector2( 2, 3 )
+limit_left = 0
+limit_top = 0

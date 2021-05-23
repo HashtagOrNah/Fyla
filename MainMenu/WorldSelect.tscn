@@ -1,0 +1,180 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://MainMenu/Assets/MainFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://MainMenu/Assets/Bullpen3D.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://MainMenu/TextEnter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainMenu/MenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MainMenu/WorldSelect.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+extra_spacing_char = 5
+font_data = ExtResource( 2 )
+
+[node name="WorldSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0901961, 0.270588, 0.368627, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMargins" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 0.00012207
+size_flags_vertical = 0
+custom_constants/margin_right = 80
+custom_constants/margin_top = 100
+custom_constants/margin_left = 80
+custom_constants/margin_bottom = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginFit" type="MarginContainer" parent="MainMargins"]
+margin_left = 80.0
+margin_top = 100.0
+margin_right = 1840.0
+margin_bottom = 980.0
+
+[node name="MainContent" type="VBoxContainer" parent="MainMargins/MarginFit"]
+margin_right = 1760.0
+margin_bottom = 880.0
+custom_constants/separation = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMargins/MarginFit/MainContent"]
+margin_right = 1760.0
+margin_bottom = 53.0
+custom_constants/margin_right = 1646
+
+[node name="BackButton" parent="MainMargins/MarginFit/MainContent/MarginContainer" instance=ExtResource( 4 )]
+margin_right = 114.0
+margin_bottom = 53.0
+size_flags_horizontal = 13
+size_flags_vertical = 0
+text = "<="
+
+[node name="ButtonMargins" type="MarginContainer" parent="MainMargins/MarginFit/MainContent"]
+margin_top = 83.0
+margin_right = 1760.0
+margin_bottom = 875.0
+size_flags_horizontal = 7
+size_flags_vertical = 0
+custom_constants/margin_top = 100
+custom_constants/margin_left = 500
+custom_constants/margin_bottom = 100
+
+[node name="Buttons And Map" type="HBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins"]
+margin_left = 500.0
+margin_top = 100.0
+margin_right = 1760.0
+margin_bottom = 692.0
+size_flags_horizontal = 3
+custom_constants/separation = 30
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map"]
+margin_right = 533.0
+margin_bottom = 592.0
+custom_constants/separation = 50
+
+[node name="Title" type="Label" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons"]
+margin_right = 533.0
+margin_bottom = 86.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.57
+custom_fonts/font = SubResource( 1 )
+text = "Generate Map"
+
+[node name="WidthBox" type="VBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons"]
+margin_top = 136.0
+margin_right = 533.0
+margin_bottom = 236.0
+
+[node name="WidthTitle" type="Label" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/WidthBox"]
+margin_right = 449.0
+margin_bottom = 43.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.57
+custom_fonts/font = ExtResource( 1 )
+text = "Map Width (max 100)"
+
+[node name="Width" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/WidthBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 47.0
+margin_right = 533.0
+margin_bottom = 100.0
+
+[node name="HeightBox" type="VBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons"]
+margin_top = 286.0
+margin_right = 533.0
+margin_bottom = 386.0
+
+[node name="HeightTitle" type="Label" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/HeightBox"]
+margin_right = 462.0
+margin_bottom = 43.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.57
+custom_fonts/font = ExtResource( 1 )
+text = "Map Height (max 100)"
+
+[node name="Height" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/HeightBox" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 47.0
+margin_right = 533.0
+margin_bottom = 100.0
+
+[node name="GenMap" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons" instance=ExtResource( 4 )]
+margin_top = 436.0
+margin_right = 533.0
+margin_bottom = 489.0
+focus_mode = 1
+enabled_focus_mode = 1
+text = "Generate Map"
+
+[node name="Play Map" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons" instance=ExtResource( 4 )]
+margin_top = 539.0
+margin_right = 533.0
+margin_bottom = 592.0
+focus_mode = 1
+enabled_focus_mode = 1
+text = "Play Map"
+
+[node name="ViewportContainer" type="ViewportContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map"]
+margin_left = 563.0
+margin_right = 1260.0
+margin_bottom = 592.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.25
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/ViewportContainer"]
+size = Vector2( 697, 592 )
+size_override_stretch = true
+handle_input_locally = false
+disable_3d = true
+usage = 1
+render_target_update_mode = 3
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/MarginContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="value_changed" from="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/WidthBox/Width" to="." method="_on_Width_value_changed"]
+[connection signal="value_changed" from="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/HeightBox/Height" to="." method="_on_Height_value_changed"]
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/GenMap" to="." method="_on_GenMap_pressed"]
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/Buttons And Map/MainMenuButtons/Play Map" to="." method="_on_Play_Map_pressed"]

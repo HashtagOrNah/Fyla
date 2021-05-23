@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MainMenu/Assets/MainFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("Viewport")
+
+[node name="Popup" type="Spatial"]
+visible = false
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 100, 100 )
+transparent_bg = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "R"
+scroll_active = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00356942, -0.0245366, -0.0104895 )
+flip_v = true
+billboard = 1
+double_sided = false
+texture = SubResource( 1 )
