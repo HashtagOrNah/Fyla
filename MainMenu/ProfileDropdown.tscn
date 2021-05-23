@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://MainMenu/Assets/MainFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://MainMenu/Assets/ButtonPressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://MainMenu/Assets/ButtonHover.tres" type="StyleBox" id=3]
+[ext_resource path="res://MainMenu/Assets/ButtonNormal.tres" type="StyleBox" id=4]
+
+[node name="ItemList" type="OptionButton"]
+margin_right = 360.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
