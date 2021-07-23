@@ -1,7 +1,7 @@
 extends Node
 
-var save_dir_path : String  = "C:\\Users\\onewa\\Desktop\\Fyla Saves\\"
-
+#var save_dir_path : String  = "C:\\Users\\onewa\\Desktop\\Fyla Saves\\"
+var save_dir_path : String  = ".\\Fyla Saves\\"
 var current_profile : String = "test"
 
 func save_game():
@@ -16,7 +16,7 @@ func save_game():
 		if node.filename.empty():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
-
+			
 		# Check the node has a save function.
 		if !node.has_method("save"):
 			print("persistent node '%s' is missing a save() function, skipped" % node.name)

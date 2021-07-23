@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sounds/Music/Fyla Melody.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sounds/SoundEffects/GemCollected.wav" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/AudioPlayer.gd" type="Script" id=3]
+
+[node name="MusicController" type="Node"]
+pause_mode = 2
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="Gem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -19.348
+pitch_scale = 1.28

@@ -1,6 +1,6 @@
 extends Control
 
-onready var gem_count_text = $MarginContainer/HBoxContainer/Right/HBoxContainer/Right/GridContainer/Gem/Label
+onready var gem_count_text = $MarginContainer/HBoxContainer/Right/HBoxContainer/Right/Resources/Gem/Label
 
 var gem_count = 0 setget _set_gem_count
 

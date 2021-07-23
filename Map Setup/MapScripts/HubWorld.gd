@@ -6,37 +6,54 @@ var gem = load("res://Abilities/Gem/Gem.tscn")
 var tile_map = load("res://MapGen/TileMapGen.tscn")
 var empty_map = load("res://Map Setup/EmptyMap.tscn")
 
+onready var shop_menu = $ShopMenu
 onready var return_menu = $ReturnMenu
 onready var portal_tooltip = $Portal/Popup
+onready var shop_tooltip = $Shop/Popup
 
 enum {CRYSTAL, VINE, WALL, EXIT, GRASS, P_SPAWN}
 
 var player_spawn_pos = Vector3()
 var exit_pos
 var is_in_exit = false
+var is_in_shop = false
 var player_node : Object
 
 var rng = RandomNumberGenerator.new()
 
 func _ready():
 
+	Events.connect("beat_game", self, "_on_beat_game")
 	player_spawn_pos = grab_player_spawn()
 	spawn_player()
-	
 	
 func _input(event):
 	
 	if event.is_action_pressed("pause"):
-		return_menu.visible = true
+		if shop_menu.visible == true:
+			shop_menu.visible = false
+		else:
+			return_menu.visible = !return_menu.visible
 		
 	if event.is_action_pressed("interact") and is_in_exit:
 		warp_new_map()
+		
+	if event.is_action_pressed("interact") and is_in_shop:
+
+		return_menu.visible = false
+		shop_menu.visible = true
+		
+		shop_menu.set_stats(player_node)
+
+func _on_beat_game():
+	
+	shop_menu.visible = false
 		
 func warp_new_map():
 	Saving.save_game()
 	
 	var gen_map = tile_map.instance()
-	gen_map.gen_random_map(player_node.map_width, player_node.map_height, 0)
+	gen_map.gen_random_map(player_node.map_size_curr, player_node.map_size_curr, 0)
 	
 	var grid_map = empty_map.instance()
 	get_tree().get_root().add_child(grid_map)
@@ -77,3 +94,12 @@ func _on_Portal_body_entered(body):
 func _on_Portal_body_exited(body):
 	is_in_exit = false
 	portal_tooltip.visible = false
+
+
+func _on_Shop_body_entered(body):
+	is_in_shop = true
+	shop_tooltip.visible = true
+
+func _on_Shop_body_exited(body):
+	is_in_shop = false
+	shop_tooltip.visible = false

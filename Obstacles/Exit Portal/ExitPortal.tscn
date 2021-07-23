@@ -13,6 +13,8 @@ script = ExtResource( 2 )
 
 [node name="PlayerScanner" type="Area" parent="."]
 monitorable = false
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerScanner"]
 transform = Transform( 1.19867, 0, 0, 0, 1, 0, 0, 0, 1.19867, 0, 0, 0 )
@@ -20,6 +22,7 @@ shape = SubResource( 1 )
 
 [node name="Popup" parent="." instance=ExtResource( 3 )]
 transform = Transform( 2.18712, 0, 0, 0, 2.18712, 0, 0, 0, 2.18712, 0.792395, 0.625116, 0.446138 )
+
 [connection signal="body_entered" from="PlayerScanner" to="." method="_on_PlayerScanner_body_entered"]
 [connection signal="body_exited" from="PlayerScanner" to="." method="_on_PlayerScanner_body_exited"]
 

@@ -1,4 +1,9 @@
-[gd_resource type="ArrayMesh" format=2]
+[gd_resource type="ArrayMesh" load_steps=3 format=2]
+
+[ext_resource path="res://0AlphaShader.tres" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
 
 [resource]
 resource_name = "Cube.004"
@@ -9,6 +14,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 97559,
 "index_count": 36,
+"material": SubResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 24

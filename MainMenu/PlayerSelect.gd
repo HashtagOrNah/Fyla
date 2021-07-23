@@ -18,7 +18,13 @@ var new_profile = {
 	"profile_name" : "",
 	"last_save" : "N/A",
 	"gem_count" : 0,
-	"save_type" : "player"
+	"gem_mult_curr" : 1,
+	"speed" : 10,
+	"blast_radius_curr" : 1,
+	"map_size_curr" : 10,
+	"save_type" : "player",
+	"gems_spawned" : 1,
+	"beat_game" : 0
 }
 
 func _ready():
@@ -107,8 +113,10 @@ func set_info_text(index):
 
 	var data = char_list.get_item_metadata(index)
 	
-	var text_string = "Gem Count: %s\n\n[center]Last Save\nDate: %s\nTime: %s[/center]"
-
+	var text_string = "Beat the Game: %s %s\nGem Count: %s\nSpeed: %s\nBlast: %s\nMap Size: %s\nGem Multi: %s\nGems Spawned: %s\n\n[center]Last Save\nDate: %s\nTime: %s[/center]"
+	
+	var ng = ""
+	var won = "No :("
 	var date = "[tornado]N/A[/tornado]"
 	var time = "[wave]N/A[/wave]"
 	if typeof(data.last_save) == TYPE_DICTIONARY:
@@ -124,7 +132,11 @@ func set_info_text(index):
 		else:
 			time = str(data.last_save.hour) + time + " AM"
 		
-	text_string = text_string % [data.get("gem_count"), date, time] #data.get("last_save")]
+		if data.beat_game >= 1:
+			ng = "NG+%s" % [data.beat_game]
+			won = "[rainbow]Yes!!![/rainbow]"
+		
+	text_string = text_string % [won, ng, data.gem_count, data.speed, data.blast_radius_curr, data.map_size_curr, data.gem_mult_curr, data.gems_spawned, date, time] #data.get("last_save")]
 	display_info.bbcode_text = text_string
 
 

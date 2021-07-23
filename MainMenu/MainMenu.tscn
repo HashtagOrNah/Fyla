@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://MainMenu/Assets/Logo.png" type="Texture" id=1]
 [ext_resource path="res://MainMenu/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=3]
 [ext_resource path="res://ParticleEffects/Menu/MainMenuEffect.tres" type="Material" id=4]
+[ext_resource path="res://MainMenu/Options.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Theme/MainTheme.tres" type="Theme" id=6]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -47,7 +49,7 @@ custom_constants/separation = 50
 
 [node name="Title" type="TextureRect" parent="MainMargins/MarginFit/MainContent"]
 margin_right = 1760.0
-margin_bottom = 301.0
+margin_bottom = 250.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.57
 texture = ExtResource( 1 )
@@ -55,60 +57,111 @@ expand = true
 stretch_mode = 6
 
 [node name="ButtonMargins" type="MarginContainer" parent="MainMargins/MarginFit/MainContent"]
-margin_top = 351.0
+margin_top = 300.0
 margin_right = 1760.0
 margin_bottom = 880.0
 size_flags_vertical = 3
-custom_constants/margin_right = 500
+custom_constants/margin_right = 250
 custom_constants/margin_top = 100
-custom_constants/margin_left = 500
+custom_constants/margin_left = 250
 custom_constants/margin_bottom = 100
 
-[node name="MainMenuButtons" type="VBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins"]
-margin_left = 500.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins"]
+margin_left = 250.0
 margin_top = 100.0
-margin_right = 1260.0
-margin_bottom = 429.0
-custom_constants/separation = 50
+margin_right = 1510.0
+margin_bottom = 480.0
 
-[node name="Bottom" type="Particles2D" parent="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons"]
-position = Vector2( 380, 545 )
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer"]
+margin_right = 417.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer"]
+margin_left = 421.0
+margin_right = 838.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+custom_constants/separation = 50
+alignment = 1
+
+[node name="Bottom" type="Particles2D" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons"]
+position = Vector2( 209, 588 )
 scale = Vector2( 0.890098, 0.781298 )
 amount = 300
 lifetime = 15.0
 preprocess = 15.0
 process_material = ExtResource( 4 )
 
-[node name="MapGen" parent="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons" instance=ExtResource( 2 )]
-margin_left = 156.0
-margin_right = 604.0
-margin_bottom = 44.0
-size_flags_vertical = 3
-text = "Random Map (Old, Use below)"
+[node name="ProfileSelect" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons" instance=ExtResource( 2 )]
+margin_left = 176.0
+margin_top = 84.0
+margin_right = 241.0
+margin_bottom = 121.0
+size_flags_vertical = 5
+text = "Play"
 
-[node name="ProfileSelect" parent="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons" instance=ExtResource( 2 )]
-margin_left = 249.0
-margin_top = 94.0
-margin_right = 510.0
-margin_bottom = 138.0
-size_flags_vertical = 3
-text = "Play From Profile"
+[node name="MuteAudio" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons" instance=ExtResource( 2 )]
+margin_left = 62.0
+margin_top = 171.0
+margin_right = 355.0
+margin_bottom = 208.0
+text = "Mute/Unmute Music"
 
-[node name="Options" parent="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons" instance=ExtResource( 2 )]
-margin_left = 326.0
-margin_top = 188.0
-margin_right = 434.0
-margin_bottom = 232.0
-size_flags_vertical = 3
-text = "Options"
-
-[node name="ExitGame" parent="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons" instance=ExtResource( 2 )]
-margin_left = 309.0
-margin_top = 282.0
-margin_right = 450.0
-margin_bottom = 329.0
-size_flags_vertical = 3
+[node name="ExitGame" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons" instance=ExtResource( 2 )]
+margin_left = 138.0
+margin_top = 258.0
+margin_right = 279.0
+margin_bottom = 295.0
+size_flags_vertical = 5
 text = "Exit Game"
-[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons/MapGen" to="." method="_on_PlayGame_pressed"]
-[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons/ProfileSelect" to="." method="_on_ProfileSelect_pressed"]
-[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/MainMenuButtons/ExitGame" to="." method="_on_ExitGame_pressed"]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer"]
+margin_left = 842.0
+margin_right = 1260.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/HBoxContainer3"]
+margin_right = 418.0
+margin_bottom = 380.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]Controls:
+Move: W,A,S,D
+
+Bomb: E/Left Mouse
+
+Warp Out: X/Right Mouse
+
+Interact: R
+
+Zoom in/out: Middle M"
+text = "Controls:
+Move: W,A,S,D
+
+Bomb: E/Left Mouse
+
+Warp Out: X/Right Mouse
+
+Interact: R
+
+Zoom in/out: Middle M"
+fit_content_height = true
+scroll_active = false
+
+[node name="Control" parent="MainMargins" instance=ExtResource( 5 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 80.0
+margin_top = 100.0
+margin_right = 1840.0
+margin_bottom = 980.0
+
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons/ProfileSelect" to="." method="_on_ProfileSelect_pressed"]
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons/MuteAudio" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MainMargins/MarginFit/MainContent/ButtonMargins/HBoxContainer/MainMenuButtons/ExitGame" to="." method="_on_ExitGame_pressed"]

@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Map Setup/Map1MeshRes.tres" type="MeshLibrary" id=1]
 [ext_resource path="res://Map Setup/MapScripts/TileToGridMap.gd" type="Script" id=2]
 [ext_resource path="res://Map Setup/Pause Menu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Obstacles/Exit Portal/ExitPortal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Abilities/Drop Bomb/Bomb.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Abilities/Gem/Gem.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Map Setup/HubWorld.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Abilities/Gem/GemBlue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Abilities/Gem/GemGreen.tscn" type="PackedScene" id=10]
 
 [node name="GridMap" type="GridMap"]
 mesh_library = ExtResource( 1 )
@@ -14,5 +21,12 @@ script = ExtResource( 2 )
 __meta__ = {
 "_editor_clip_": 0
 }
+player = ExtResource( 5 )
+bomb = ExtResource( 6 )
+exit = ExtResource( 4 )
+gem = ExtResource( 7 )
+gem_blue = ExtResource( 9 )
+gem_green = ExtResource( 10 )
+hub = ExtResource( 8 )
 
 [node name="ReturnMenu" parent="." instance=ExtResource( 3 )]

@@ -1,45 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Player/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://Abilities/WarpHub.png" type="Texture" id=1]
 [ext_resource path="res://Player/PlayerUI.gd" type="Script" id=2]
 [ext_resource path="res://Player/Resource_Counter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Theme/MainTheme.tres" type="Theme" id=4]
+[ext_resource path="res://Abilities/Drop Bomb/Assets/bomb_icon.png" type="Texture" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -224.0
-margin_right = 224.0
-margin_bottom = 56.0
-allow_greater = true
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HPText" type="RichTextLabel" parent="HealthBar"]
-modulate = Color( 0.92549, 0.00392157, 0.00392157, 1 )
-anchor_left = 0.5
-anchor_top = 0.714
-anchor_right = 0.5
-anchor_bottom = 0.714
-margin_left = -216.0
-margin_top = 0.0159988
-margin_right = 216.0
-margin_bottom = 12.016
-mouse_filter = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-bbcode_enabled = true
-tab_size = 0
-scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -56,49 +27,132 @@ __meta__ = {
 margin_right = 1920.0
 margin_bottom = 1080.0
 
-[node name="Left" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 637.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-
-[node name="Middle" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 641.0
-margin_right = 1278.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-
 [node name="Right" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 1282.0
-margin_right = 1920.0
+margin_right = 380.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Right"]
-margin_right = 638.0
+margin_right = 380.0
 margin_bottom = 1080.0
-
-[node name="Left" type="MarginContainer" parent="MarginContainer/HBoxContainer/Right/HBoxContainer"]
-margin_right = 317.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
 
 [node name="Right" type="MarginContainer" parent="MarginContainer/HBoxContainer/Right/HBoxContainer"]
-margin_left = 321.0
-margin_right = 638.0
+margin_right = 188.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 custom_constants/margin_left = 80
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/Right/HBoxContainer/Right"]
+[node name="Resources" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Right/HBoxContainer/Right"]
 margin_left = 80.0
-margin_right = 317.0
+margin_right = 188.0
 margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/vseparation = 100
+custom_constants/separation = 75
 
-[node name="Gem" parent="MarginContainer/HBoxContainer/Right/HBoxContainer/Right/GridContainer" instance=ExtResource( 3 )]
+[node name="Gem" parent="MarginContainer/HBoxContainer/Right/HBoxContainer/Right/Resources" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-[connection signal="mouse_entered" from="HealthBar" to="HealthBar" method="_on_HealthBar_mouse_entered"]
-[connection signal="mouse_exited" from="HealthBar" to="HealthBar" method="_on_HealthBar_mouse_exited"]
+margin_right = 108.0
+
+[node name="Left" type="MarginContainer" parent="MarginContainer/HBoxContainer/Right/HBoxContainer"]
+margin_left = 192.0
+margin_right = 380.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="Left" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 384.0
+margin_right = 765.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="Middle" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 769.0
+margin_right = 1150.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Middle"]
+margin_right = 381.0
+margin_bottom = 1080.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_right = 381.0
+margin_bottom = 150.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 154.0
+margin_right = 381.0
+margin_bottom = 305.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 309.0
+margin_right = 381.0
+margin_bottom = 460.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 464.0
+margin_right = 381.0
+margin_bottom = 615.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 619.0
+margin_right = 381.0
+margin_bottom = 770.0
+size_flags_vertical = 3
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 774.0
+margin_right = 381.0
+margin_bottom = 925.0
+size_flags_vertical = 3
+
+[node name="ButtonIcons" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer"]
+margin_top = 929.0
+margin_right = 381.0
+margin_bottom = 1080.0
+size_flags_vertical = 3
+
+[node name="WarpHome" type="MarginContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer/ButtonIcons"]
+margin_right = 124.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer/ButtonIcons/WarpHome"]
+margin_right = 124.0
+margin_bottom = 151.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer/ButtonIcons"]
+margin_left = 128.0
+margin_right = 252.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+
+[node name="Bomb" type="MarginContainer" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer/ButtonIcons"]
+margin_left = 256.0
+margin_right = 381.0
+margin_bottom = 151.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Middle/VBoxContainer/ButtonIcons/Bomb"]
+margin_right = 125.0
+margin_bottom = 151.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Left2" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 1154.0
+margin_right = 1535.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="Left3" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 1539.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3

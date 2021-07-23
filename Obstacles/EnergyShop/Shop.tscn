@@ -1,0 +1,275 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Obstacles/EnergyShop/EnergyShop.glb" type="PackedScene" id=1]
+[ext_resource path="res://Obstacles/EnergyShop/Spiral.png" type="Texture" id=2]
+[ext_resource path="res://Obstacles/EnergyShop/Shop.gd" type="Script" id=3]
+[ext_resource path="res://Theme/MainTheme.tres" type="Theme" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, -1, 0 )
+flatness = 1.0
+gravity = Vector3( 0, -100, 0 )
+initial_velocity = 0.1
+angular_velocity = 1000.0
+linear_accel = -100.0
+radial_accel = -25.22
+tangential_accel = 100.0
+tangential_accel_random = 0.13
+scale = 0.5
+color = Color( 1, 0.427451, 0.427451, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 1, 0.596078, 0.0235294, 1 )
+albedo_texture = ExtResource( 2 )
+
+[sub_resource type="QuadMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="Animation" id=6]
+length = 13.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnergyShop:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 9.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 100, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.6, 5.5, 12.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "activate_text"
+}, {
+"args": [  ],
+"method": "activate_text2"
+}, {
+"args": [  ],
+"method": "finished_anim"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 8, 10.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera/Control/Text3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 8.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Camera/Control/Text4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 11.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 6.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("EnergyShop")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray(  )
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("EnergyShop:translation:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2.38344 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("EnergyShop:translation:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 3, 6 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("EnergyShop:translation:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 2.38344 )
+}
+
+[node name="Shop" type="Spatial"]
+pause_mode = 2
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765607, 0 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.513286, 0.509996, -0.690248, -0.0497887, 0.785231, 0.617199, 0.856772, 0.351166, -0.377656, -8.16508, 34.5698, -4.31342 )
+fov = 123.6
+
+[node name="Control" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera/Control"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -44.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]Thanks for playing!"
+text = "Thanks for playing!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text2" type="RichTextLabel" parent="Camera/Control"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 12.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Developed by: HashtagOrNah!"
+text = "Developed by: HashtagOrNah!"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text3" type="RichTextLabel" parent="Camera/Control"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 60.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Will you keep playing?"
+text = "Will you keep playing?"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text4" type="RichTextLabel" parent="Camera/Control"]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 116.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center][wave]I sure hope not..."
+text = "I sure hope not..."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnergyShop" parent="." instance=ExtResource( 1 )]
+transform = Transform( 3.37315, 0, 0, 0, 3.37315, 0, 0, 0, 3.37315, 0, 25.2525, 0 )
+
+[node name="Particles" type="Particles" parent="EnergyShop"]
+transform = Transform( 0.135595, 0.0644129, 0.255641, 0.0301824, -0.289376, 0.0569038, 0.261898, 0, -0.138914, 0.0790115, 3.64521, -0.0257264 )
+amount = 200
+lifetime = 2.0
+preprocess = 2.54
+speed_scale = 0.46
+visibility_aabb = AABB( -0.0368352, -0.407946, -0.235375, 0.146913, 0.00436825, 0.002 )
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
+method_call_mode = 1
+anims/BeatGame = SubResource( 6 )
+anims/PylonBob = SubResource( 7 )

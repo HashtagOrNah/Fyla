@@ -1,31 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Assets/Glorbock.glb" type="PackedScene" id=3]
 
 [sub_resource type="CylinderShape" id=1]
-margin = 0.242
-height = 0.621591
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 2.00542, 0.418933, 1.57711 )
-
-[sub_resource type="Animation" id=3]
-length = 0.5
-tracks/0/type = "transform"
-tracks/0/path = NodePath("Attack")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.1, 1, 0, 0, -1.07372, 0, -0.143968, 0, 0.989582, 1, 1, 1, 0.3, 1, 0.852224, 0, -0.27531, 0, -0.393773, 0, 0.919208, 1, 1, 1, 0.5, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="Player" type="KinematicBody" groups=[
 "Persist",
 "player",
 ]]
 collision_layer = 2
+collision_mask = 3
 collision/safe_margin = 0.01
 script = ExtResource( 1 )
 
@@ -33,33 +19,19 @@ script = ExtResource( 1 )
 transform = Transform( 0.352479, 0, 0, 0, 0.352479, 0, 0, 0, 0.352479, 0, -0.295257, -0.607336 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.855806, 0, 0, 0, 1.89656, 0, 0, 0, 0.855806, 0, 0, 0 )
+transform = Transform( 0.855806, 0, 0, 0, 0.773915, 0, 0, 0, 0.855806, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="CameraPos" type="Position3D" parent="."]
 
 [node name="Camera" type="Camera" parent="CameraPos"]
-transform = Transform( 1, -5.71874e-09, 1.68571e-07, -1.62921e-07, 0.22592, 0.974146, -4.36544e-08, -0.974146, 0.22592, -1.89507e-06, 10.7735, 2.64098 )
+transform = Transform( 1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0.200651, 10.4187, 3.48658 )
 current = true
-fov = 75.0
-near = 1.57
-far = 417.4
+fov = 60.5
+near = 0.9
+far = 72.7
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
 
-[node name="Attack" type="Area" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape" type="CollisionShape" parent="Attack"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117578, 0, -2.86207 )
-shape = SubResource( 2 )
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack = SubResource( 3 )
-
 [node name="PlayerCenter" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493014, 0 )
-[connection signal="body_entered" from="Attack" to="." method="_on_Sword_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

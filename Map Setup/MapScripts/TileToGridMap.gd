@@ -19,16 +19,14 @@ func _ready():
 		new_map = MAP.instance()
 		new_map.gen_random_map(width, height, r_seed)
 		tile_to_grid(new_map)
+		
+func _on_warp_hub():
+	Saving.save_game()
+	for i in get_children():
+		i.queue_free()
+	self.queue_free()
+	get_tree().change_scene_to(hub)
 	
-func _input(event):
-	
-	if event.is_action_pressed("test"):
-		for i in get_children():
-			i.free()
-		clear()
-		TEST = true
-		_ready()
-
 func _on_warp_new_map():
 	Saving.save_game()
 	for i in get_children():
@@ -82,7 +80,13 @@ func draw_tile_group(pos_arr, height, tile_type):
 		if tile_type == ROCK:
 			set_cell_item(cell_pos.x, height - 1, cell_pos.y, GRASS)
 			
-			if rng.randi_range(1,50) == 1:
+			if rng.randi_range(1,10) == 1:
+				if rng.randi_range(1,10) == 1:
+					if rng.randi_range(1,10) == 1:
+						set_cell_item(cell_pos.x, height, cell_pos.y, CRYSTAL_GREEN)
+						continue
+					set_cell_item(cell_pos.x, height, cell_pos.y, CRYSTAL_BLUE)
+					continue
 				set_cell_item(cell_pos.x, height, cell_pos.y, CRYSTAL)
 				continue
 		
